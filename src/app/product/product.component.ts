@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, HostListener, Input, Output} from '@angular/core';
 import {Product} from "../model/product.model";
 
 @Component({
@@ -7,23 +7,15 @@ import {Product} from "../model/product.model";
   styleUrls: ['./product.component.scss']
 })
 export class ProductComponent {
-  product1: Product = {
-    name: "product1",
-    description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-    id: 201,
-    category: "health",
-    price: 20,
-    promo: 10,
-    active: false
-  }
 
-  product2: Product = {
-    name: "product2",
-    description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-    id: 206,
-    category: "home",
-    price: 40,
-    promo: 50,
-    active: true
+  @Input('product')
+  product!: Product
+
+  @Output()
+  out = new EventEmitter<string>();
+
+  @HostListener('click')
+  displayProduct() {
+    this.out.emit(this.product.name)
   }
 }

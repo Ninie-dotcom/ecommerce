@@ -1,5 +1,9 @@
 <div class="product-list">
   <h4>Products list</h4>
-  <app-product></app-product>
-  <app-product></app-product>
+  <div class="message" [hidden]="selected">
+    <span (click)="close()">x</span>Vous avez sélectionné : {{productClicked}}
+  </div>
+  <app-product [product]="product1" (out)="retrieveDataFromProduct($event)"></app-product>
+  <app-product [product]="product2" (out)="retrieveDataFromProduct($event)"></app-product>
+  <app-product [product]="product3" (out)="retrieveDataFromProduct($event)"></app-product>
 </div>
