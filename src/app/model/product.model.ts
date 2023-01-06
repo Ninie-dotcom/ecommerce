@@ -1,10 +1,10 @@
 export interface Product {
-  id: number
+  id?: number
   name: string
-  category: string
-  price: number
-  promo: number
-  description: string
-  active: boolean
+  category?: string
+  price?: number
+  promo?: number
+  description?: string
+  active?: boolean
 
 }

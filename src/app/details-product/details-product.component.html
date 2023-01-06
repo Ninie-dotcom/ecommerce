@@ -1,0 +1,12 @@
+<div class="product">
+  <h3>{{product?.name}} | {{product?.price}}€</h3>
+  <h3>Catégorie : {{product?.category}}</h3>
+  <p>{{product?.description}}</p>
+  <p>Active : {{product?.active}}</p>
+  <button *ngIf="!confirm" (click)="confirmRemove()">Supprimer</button>
+  <div *ngIf="confirm">
+    Confirmez-vous la suppression ?
+    <button (click)="deleteProduct(product)">Oui</button>
+    <button (click)="notConfirmRemove()">non</button>
+  </div>
+</div>
