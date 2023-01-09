@@ -1,3 +1,5 @@
+import {Supplier} from "./supplier.module";
+
 export interface Product {
   id?: number
   name: string
@@ -7,4 +9,5 @@ export interface Product {
   description?: string
   active?: boolean
 
+  supplier?: Supplier
 }

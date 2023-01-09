@@ -1,30 +1,47 @@
 <div class="form">
   <h4>Ajouter un produit</h4>
-  <form [formGroup]="myForm" *ngIf="myForm">
-    <div>
+  <div *ngIf="formSubmitted">
+    <ul>
+      <li *ngIf="myForm?.controls?.['name']?.errors?.['required']">Le nom est obligatoire</li>
+      <li *ngIf="myForm?.controls?.['category']?.errors?.['required']">La catégorie est obligatoire</li>
+      <li *ngIf="myForm?.controls?.['price']?.errors?.['required']">Le prix est obligatoire</li>
+      <li *ngIf="myForm?.controls?.['price']?.errors?.['min']">Le prix doit être de 1 minimun</li>
+      <li *ngIf="myForm?.controls?.['description']?.errors?.['required']">La description est trop courte </li>
+      <li *ngIf="myForm?.controls?.['description']?.errors?.['minlength']">La description est trop courte </li>
+    </ul>
+  </div>
+  <form [formGroup]="myForm" *ngIf="myForm" (ngSubmit)="addProduct()">
+    <div class="pb-3">
       <label for="thename">Name</label>
       <input type="text" id="thename" formControlName="name">
     </div>
-    <div>
+    <div class="pb-3">
       <label for="category">Catégorie</label>
       <input type="text" id="category" formControlName="category">
     </div>
-    <div>
+    <div class="pb-3">
       <label for="price">Prix</label>
       <input type="number" id="price" formControlName="price">
     </div>
-    <div>
+    <div class="pb-3">
       <label for="promo">Promo</label>
       <input type="number" id="promo" formControlName="promo">
     </div>
-    <div>
+    <div class="pb-3">
       <label for="description">Description</label>
       <input type="text" id="description" formControlName="description">
     </div>
-    <div>
+    <div class="pb-3">
       <label for="active">Active</label>
       <input type="checkbox" id="active" formControlName="active">
     </div>
-    <button type="submit" (click)="addProduct()">Ajouter produit</button>
+
+      <div formGroupName="supplier" class="pb-3">
+        <select formControlName="id">
+          <option *ngFor="let s of suppliers"  [value]="s.id">{{s.companyName}}</option>
+        </select>
+      </div>
+
+    <button type="submit" class="btn btn-primary">Ajouter produit</button>
   </form>
 </div>

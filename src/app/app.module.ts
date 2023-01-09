@@ -11,6 +11,7 @@ import {RouterModule, Routes} from "@angular/router";
 import { HomeComponent } from './home/home.component';
 import { DetailsProductComponent } from './details-product/details-product.component';
 import { AddProductComponent } from './add-product/add-product.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 /* routes */
 const routes: Routes = [
@@ -36,7 +37,8 @@ const routes: Routes = [
     FormsModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

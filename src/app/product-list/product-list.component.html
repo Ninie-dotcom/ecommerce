@@ -1,18 +1,18 @@
 <div class="product-list">
   <h4>Products list</h4>
+
   <div class="message" *ngIf="!selected">
     <span (click)="close()">x</span>Vous avez sélectionné : {{productClicked.name}} <a routerLink="{{productClicked.id}}">voir les détails</a> |
   </div>
-  <button routerLink="new" ><!-- *ngIf="actionAdd" (click)="displayForm()"-->Ajouter un produit</button>
 
   <div *ngIf="products.length == 0">
     Aucun produit dans le base de donnée
   </div>
-  <!-- <div *ngIf="!actionAdd">
+  <div>
     <app-add-product></app-add-product>
-  </div> -->
+  </div>
 
-  <div *ngIf="products.length > 0">
-  <app-product *ngFor="let p of products" [product]="p" (out)="retrieveDataFromProduct($event)"></app-product>
+  <div *ngIf="products.length > 0" >
+    <app-product *ngFor="let p of products" [product]="p" (out)="retrieveDataFromProduct($event)"></app-product>
   </div>
 </div>
